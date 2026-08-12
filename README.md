@@ -10,9 +10,9 @@ My goal is to combine my real-world operational experience with technical cybers
 
 ## Professional Statement
 
-I am a detail-oriented professional with a strong background in operations, problem-solving, risk awareness, and process improvement. I am developing my cybersecurity skills to identify vulnerabilities, mitigate risk, and help protect the systems, assets, and sensitive information organizations depend on.
+My professional statement outlines the strengths, values, and career goals I bring to cybersecurity.
 
-I value accountability and continuous learning, and my goal is to combine my real-world operational experience with cybersecurity knowledge to help organizations strengthen their security posture and protect their people and data.
+[View my Professional Statement](professional-statement/professional-statement.md)
 
 ## Cybersecurity Skills
 
