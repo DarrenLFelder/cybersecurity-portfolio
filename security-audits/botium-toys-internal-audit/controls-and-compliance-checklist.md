@@ -12,7 +12,7 @@ This checklist documents my assessment of the security controls and compliance p
 |---|---|
 | Least Privilege | No |
 | Disaster recovery plans | No |
-| Password policies | Yes |
+| Password policies | No |
 | Separation of duties | No |
 | Firewall | Yes |
 | Intrusion detection system (IDS) | No |
@@ -31,7 +31,7 @@ Botium Toys has several technical and physical security controls in place, inclu
 
 However, significant security gaps remain. Least privilege and separation of duties have not been implemented, sensitive payment information is not encrypted, an IDS is not present, and the organization lacks backups and a disaster recovery plan.
 
-Although password policies and legacy-system monitoring exist, both require improvement.
+Existing password requirements are insufficient and should be strengthened to meet appropriate password complexity standards. Legacy-system monitoring is performed, but it also requires improvement through regular scheduling and clearly defined intervention procedures.
 
 ---
 
@@ -76,12 +76,11 @@ However, additional work is needed to properly classify and inventory data and s
 | User access policies are established | No |
 | Sensitive data (PII/SPII) is confidential/private | No |
 | Data integrity is maintained | Yes |
-| Data is available to authorized individuals | Yes |
+| Data is available to authorized individuals | No |
 
 ### SOC Findings
 
-Botium Toys has controls supporting data integrity and availability. However, weaknesses in user access controls and the protection of PII/SPII create confidentiality concerns.
-
+Botium Toys has controls supporting data integrity. However, weaknesses in user access controls and the protection of PII/SPII create confidentiality concerns. Although data is available to employees, access is not appropriately restricted to individuals who require it for their job responsibilities.
 ---
 
 ## Recommendations
