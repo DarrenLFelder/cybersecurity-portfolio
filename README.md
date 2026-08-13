@@ -35,7 +35,7 @@ Projects and labs will be added as I progress through my cybersecurity training 
 
 | Area | Projects |
 |---|---|
-| Security Audits | Coming soon |
+| Security Audits | [Botium Toys Internal Security Audit](security-audits/botium-toys-internal-audit/) |
 | Network Security | Coming soon |
 | Linux | Coming soon |
 | SQL | Coming soon |
