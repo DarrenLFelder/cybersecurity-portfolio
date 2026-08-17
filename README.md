@@ -29,6 +29,14 @@ This portfolio will document my development in areas including:
 - Vulnerability management
 - Security frameworks and controls
 
+## Featured Projects
+
+### [Botium Toys Internal Security Audit](security-audits/botium-toys-internal-audit/)
+Internal security audit using NIST CSF concepts to evaluate security controls, identify compliance gaps, assess organizational risk, and prioritize remediation.
+
+### [DNS and ICMP Network Traffic Analysis](network-security/dns-icmp-traffic-analysis/)
+Network traffic analysis using `tcpdump` to investigate DNS communication failures, interpret UDP and ICMP traffic, identify port 53 availability issues, and document incident findings.
+
 ## Portfolio Projects
 
 Projects and labs will be added as I progress through my cybersecurity training and complete hands-on security work.
@@ -36,7 +44,7 @@ Projects and labs will be added as I progress through my cybersecurity training 
 | Area | Projects |
 |---|---|
 | Security Audits | [Botium Toys Internal Security Audit](security-audits/botium-toys-internal-audit/) |
-| Network Security | Coming soon |
+| Network Security | [DNS and ICMP Network Traffic Analysis](network-security/dns-icmp-traffic-analysis/) |
 | Linux | Coming soon |
 | SQL | Coming soon |
 | Python | Coming soon |
