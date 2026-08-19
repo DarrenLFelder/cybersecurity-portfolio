@@ -37,6 +37,9 @@ Internal security audit using NIST CSF concepts to evaluate security controls, i
 ### [DNS and ICMP Network Traffic Analysis](network-security/dns-icmp-traffic-analysis/)
 Network traffic analysis using `tcpdump` to investigate DNS communication failures, interpret UDP and ICMP traffic, identify port 53 availability issues, and document incident findings.
 
+### [DoS SYN Flood Attack Analysis](network-security/dos-syn-flood-analysis/)
+Network traffic analysis using Wireshark to investigate abnormal TCP SYN traffic, identify a DoS SYN flood attack, analyze the impact on legitimate connections, and document incident findings.
+
 ## Portfolio Projects
 
 Projects and labs will be added as I progress through my cybersecurity training and complete hands-on security work.
@@ -44,7 +47,7 @@ Projects and labs will be added as I progress through my cybersecurity training 
 | Area | Projects |
 |---|---|
 | Security Audits | [Botium Toys Internal Security Audit](security-audits/botium-toys-internal-audit/) |
-| Network Security | [DNS and ICMP Network Traffic Analysis](network-security/dns-icmp-traffic-analysis/) |
+| Network Security | [DNS and ICMP Network Traffic Analysis](network-security/dns-icmp-traffic-analysis/) • [DoS SYN Flood Attack Analysis](network-security/dos-syn-flood-analysis/) |
 | Linux | Coming soon |
 | SQL | Coming soon |
 | Python | Coming soon |
