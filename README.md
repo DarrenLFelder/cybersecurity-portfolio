@@ -46,6 +46,9 @@ Investigation of a compromised website involving a brute-force administrative ac
 ### [Network Hardening Risk Assessment](network-security/network-hardening-risk-assessment/)
 Security risk assessment of network and authentication vulnerabilities following a simulated data breach. Recommended firewall maintenance, password policies, and multifactor authentication (MFA) using a defense-in-depth approach.
 
+### [NIST CSF ICMP DoS Incident Analysis](incident-response/nist-csf-icmp-dos-analysis/)
+Incident response analysis applying the NIST Cybersecurity Framework (CSF) to an ICMP flood DoS attack, including vulnerability identification, protective controls, detection capabilities, containment, and service recovery.
+
 ## Portfolio Projects
 
 Projects and labs will be added as I progress through my cybersecurity training and complete hands-on security work.
@@ -57,7 +60,7 @@ Projects and labs will be added as I progress through my cybersecurity training 
 | Linux | Coming soon |
 | SQL | Coming soon |
 | Python | Coming soon |
-| Incident Response | Coming soon |
+| Incident Response | [NIST CSF ICMP DoS Incident Analysis](incident-response/nist-csf-icmp-dos-analysis/) |
 | Threat Analysis | Coming soon |
 | SIEM & Detection | Coming soon |
 
