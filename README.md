@@ -43,6 +43,9 @@ Network traffic analysis using Wireshark to investigate abnormal TCP SYN traffic
 ### [Brute-Force and Malware Redirect Investigation](web-security/brute-force-malware-redirect-investigation/)
 Investigation of a compromised website involving a brute-force administrative account attack, malicious JavaScript, malware delivery, DNS and HTTP traffic analysis, browser redirection, and security remediation.
 
+### [Network Hardening Risk Assessment](network-security/network-hardening-risk-assessment/)
+Security risk assessment of network and authentication vulnerabilities following a simulated data breach. Recommended firewall maintenance, password policies, and multifactor authentication (MFA) using a defense-in-depth approach.
+
 ## Portfolio Projects
 
 Projects and labs will be added as I progress through my cybersecurity training and complete hands-on security work.
@@ -50,8 +53,7 @@ Projects and labs will be added as I progress through my cybersecurity training 
 | Area | Projects |
 |---|---|
 | Security Audits | [Botium Toys Internal Security Audit](security-audits/botium-toys-internal-audit/) |
-| Network Security | [DNS and ICMP Network Traffic Analysis](network-security/dns-icmp-traffic-analysis/) • [DoS SYN Flood Attack Analysis](network-security/dos-syn-flood-analysis/) |
-| Web Security | [Brute-Force and Malware Redirect Investigation](web-security/brute-force-malware-redirect-investigation/) |
+| Network Security | [DNS and ICMP Network Traffic Analysis](network-security/dns-icmp-traffic-analysis/) • [DoS SYN Flood Attack Analysis](network-security/dos-syn-flood-analysis/) • [Network Hardening Risk Assessment](network-security/network-hardening-risk-assessment/) |
 | Linux | Coming soon |
 | SQL | Coming soon |
 | Python | Coming soon |
