@@ -40,6 +40,9 @@ Network traffic analysis using `tcpdump` to investigate DNS communication failur
 ### [DoS SYN Flood Attack Analysis](network-security/dos-syn-flood-analysis/)
 Network traffic analysis using Wireshark to investigate abnormal TCP SYN traffic, identify a DoS SYN flood attack, analyze the impact on legitimate connections, and document incident findings.
 
+### [Brute-Force and Malware Redirect Investigation](web-security/brute-force-malware-redirect-investigation/)
+Investigation of a compromised website involving a brute-force administrative account attack, malicious JavaScript, malware delivery, DNS and HTTP traffic analysis, browser redirection, and security remediation.
+
 ## Portfolio Projects
 
 Projects and labs will be added as I progress through my cybersecurity training and complete hands-on security work.
@@ -48,6 +51,7 @@ Projects and labs will be added as I progress through my cybersecurity training 
 |---|---|
 | Security Audits | [Botium Toys Internal Security Audit](security-audits/botium-toys-internal-audit/) |
 | Network Security | [DNS and ICMP Network Traffic Analysis](network-security/dns-icmp-traffic-analysis/) • [DoS SYN Flood Attack Analysis](network-security/dos-syn-flood-analysis/) |
+| Web Security | [Brute-Force and Malware Redirect Investigation](web-security/brute-force-malware-redirect-investigation/) |
 | Linux | Coming soon |
 | SQL | Coming soon |
 | Python | Coming soon |
