@@ -49,6 +49,9 @@ Security risk assessment of network and authentication vulnerabilities following
 ### [NIST CSF ICMP DoS Incident Analysis](incident-response/nist-csf-icmp-dos-analysis/)
 Incident response analysis applying the NIST Cybersecurity Framework (CSF) to an ICMP flood DoS attack, including vulnerability identification, protective controls, detection capabilities, containment, and service recovery.
 
+### [Linux File Permissions and Authorization](linux/file-permissions-authorization/)
+Linux authorization project using Bash commands to examine file and directory permissions, identify excessive access, modify permissions with `chmod`, manage hidden-file permissions, restrict directory access, and verify remediation with `ls -la`.
+
 ## Portfolio Projects
 
 Projects and labs will be added as I progress through my cybersecurity training and complete hands-on security work.
@@ -57,7 +60,7 @@ Projects and labs will be added as I progress through my cybersecurity training 
 |---|---|
 | Security Audits | [Botium Toys Internal Security Audit](security-audits/botium-toys-internal-audit/) |
 | Network Security | [DNS and ICMP Network Traffic Analysis](network-security/dns-icmp-traffic-analysis/) • [DoS SYN Flood Attack Analysis](network-security/dos-syn-flood-analysis/) • [Network Hardening Risk Assessment](network-security/network-hardening-risk-assessment/) |
-| Linux | Coming soon |
+| Linux | [Linux File Permissions and Authorization](linux/file-permissions-authorization/) |
 | SQL | Coming soon |
 | Python | Coming soon |
 | Incident Response | [NIST CSF ICMP DoS Incident Analysis](incident-response/nist-csf-icmp-dos-analysis/) |
