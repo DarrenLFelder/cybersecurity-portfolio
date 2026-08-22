@@ -1,44 +1,32 @@
-# SQL Security Investigation
+# SQL Security Investigation: Applying Filters to SQL Queries
 
 ## Project Overview
 
-This project demonstrates how I used SQL to investigate potential security issues involving employee login activity and company devices. I analyzed data from the `log_in_attempts` and `employees` tables to identify suspicious login activity and determine which employee machines required security updates.
+In this project, I used SQL to investigate potential security issues involving employee login activity and company devices. I queried and filtered data from the `log_in_attempts` and `employees` tables to identify suspicious login activity and determine which employee machines required security updates.
 
-The purpose of this project was not only to retrieve data, but to practice using SQL as an investigative tool. I used filters to narrow large datasets down to information that would be useful during a security investigation.
+The investigation required me to use SQL operators including `AND`, `OR`, `NOT`, and `LIKE`, along with date and time filters. I also encountered several query errors during the investigation, diagnosed what was wrong with my logic or syntax, and corrected the queries to return the required results.
 
-## Scenario
+## Skills Demonstrated
 
-As part of a simulated security investigation, I was responsible for reviewing login activity and employee information after potential security issues were discovered.
-
-The investigation required me to:
-
-- Identify failed login attempts occurring after business hours
-- Investigate login activity from specific dates
-- Identify login attempts originating outside of Mexico
-- Locate Marketing employees working in East building offices
-- Identify employees in the Finance and Sales departments
-- Identify employees outside of the Information Technology department
-
-## SQL Skills Demonstrated
-
-During this investigation, I worked with:
-
-- `SELECT` and `FROM` to retrieve database records
-- `WHERE` to filter records
-- `AND` to require multiple conditions
-- `OR` to retrieve records matching either condition
-- `NOT` to exclude records
-- `LIKE` and `%` for pattern matching
-- Date filtering
-- Time filtering
-- SQL troubleshooting
-- Query-result validation
+- SQL database querying
+- Security log analysis
+- `SELECT` and `WHERE` statements
+- `AND`, `OR`, and `NOT` operators
+- Pattern matching with `LIKE` and `%`
+- Date and time filtering
+- Troubleshooting SQL syntax
+- Correcting filtering logic
+- Identifying systems requiring security updates
 
 ---
 
-## Investigation 1: Failed After-Hours Login Attempts
+## 1. Retrieve After-Hours Failed Login Attempts
 
-I investigated failed login attempts that occurred after 6:00 PM.
+### Security Objective
+
+I investigated failed login attempts that occurred after normal business hours. The goal was to identify unsuccessful login attempts after 6:00 PM that could require further investigation.
+
+### SQL Query
 
 ```sql
 SELECT *
@@ -47,17 +35,25 @@ WHERE login_time > '18:00'
 AND success = 0;
 ```
 
-The `login_time > '18:00'` condition limits the results to login attempts occurring after 6:00 PM. The `success = 0` condition identifies unsuccessful login attempts.
+### Analysis
 
-I used `AND` because both conditions had to be true.
+I filtered the `log_in_attempts` table using two conditions. The condition `login_time > '18:00'` limits the results to login attempts occurring after 6:00 PM, while `success = 0` identifies unsuccessful attempts.
 
-The query returned **19 failed after-hours login attempts** for further investigation.
+I used the `AND` operator because both conditions had to be true for a record to be relevant. The query returned **19 failed after-hours login attempts**.
+
+### Evidence
+
+![After-hours failed login attempts](screenshots/01-after-hours-failed-logins.png)
 
 ---
 
-## Investigation 2: Login Attempts on Specific Dates
+## 2. Retrieve Login Attempts on Specific Dates
 
-A suspicious event occurred on May 9, 2022, so I reviewed login activity from May 9 and the previous day, May 8.
+### Security Objective
+
+A suspicious event occurred on May 9, 2022. I reviewed login activity from both May 8 and May 9 to examine activity surrounding the event.
+
+### SQL Query
 
 ```sql
 SELECT *
@@ -66,35 +62,63 @@ WHERE login_date = '2022-05-08'
 OR login_date = '2022-05-09';
 ```
 
-I used `OR` because a login attempt could have occurred on either date and still be relevant to the investigation.
+### Analysis
 
-The query returned **75 login attempts** from the two dates.
+I used the `WHERE` clause to filter the `login_date` column for the two dates being investigated.
+
+The `OR` operator was necessary because a login record could have occurred on either May 8 or May 9. A single record cannot have both dates simultaneously. The query returned **75 login attempts** from the two-day investigation period.
+
+### Evidence
+
+![Login attempts on specific dates](screenshots/02-specific-date-logins.png)
 
 ---
 
-## Investigation 3: Login Attempts Outside of Mexico
+## 3. Retrieve Login Attempts Outside of Mexico
 
-I needed to identify login attempts that did not originate in Mexico.
+### Security Objective
 
-The database contained multiple representations of Mexico, including `MEX` and `MEXICO`. I used pattern matching to account for both values.
+The security team determined that the suspicious activity did not originate in Mexico. I needed to exclude login attempts originating from Mexico so the remaining activity could be investigated.
+
+### SQL Query
 
 ```sql
 SELECT *
 FROM log_in_attempts
-WHERE NOT country LIKE 'MEX%';
+WHERE country NOT LIKE 'MEX%';
 ```
 
-`LIKE 'MEX%'` matches values beginning with `MEX`. The `%` wildcard represents any characters that may follow `MEX`.
+### Analysis
 
-Adding `NOT` excludes those records, leaving login attempts originating outside of Mexico.
+The `country` column contains more than one representation for Mexico, including `MEX` and `MEXICO`. Instead of filtering each value separately, I used `LIKE` with the `%` wildcard.
 
-The query returned **144 login attempts** from outside Mexico.
+The pattern `'MEX%'` matches values beginning with `MEX`. Adding `NOT` excludes those records from the results. The corrected query returned **144 login attempts outside of Mexico**.
+
+### Troubleshooting
+
+This task also gave me useful experience troubleshooting SQL syntax. My initial attempts placed words in the wrong order around the `country` column and `NOT LIKE`, which caused MariaDB syntax errors.
+
+I reviewed the structure of the `WHERE` clause and corrected the condition to:
+
+```sql
+WHERE country NOT LIKE 'MEX%';
+```
+
+This reinforced that SQL operators must be placed in the correct syntactical relationship to the column being evaluated.
+
+### Evidence
+
+![Login attempts outside Mexico](screenshots/03-logins-outside-mexico.png)
 
 ---
 
-## Investigation 4: Marketing Employees in the East Building
+## 4. Retrieve Marketing Employees in the East Building
 
-The security team needed information about machines assigned to Marketing employees located in East building offices.
+### Security Objective
+
+The organization needed to perform security updates on machines belonging to Marketing employees located in the East building.
+
+### SQL Query
 
 ```sql
 SELECT *
@@ -103,19 +127,27 @@ WHERE department = 'Marketing'
 AND office LIKE 'East%';
 ```
 
-The first condition limits the results to employees in Marketing.
+### Analysis
 
-`LIKE 'East%'` matches office locations beginning with `East`, regardless of the office number that follows.
+I filtered the `employees` table using the `department` and `office` columns.
 
-I used `AND` because employees needed to meet both conditions.
+The condition `department = 'Marketing'` identifies Marketing employees. Because individual East building offices have values such as `East-170`, `East-195`, and `East-267`, I used `LIKE 'East%'` to match any office beginning with `East`.
 
-The query returned **7 employees**.
+The `AND` operator requires employees to satisfy both conditions. The query returned **7 Marketing employees located in the East building**.
+
+### Evidence
+
+![Marketing employees in East building](screenshots/04-marketing-east-employees.png)
 
 ---
 
-## Investigation 5: Finance and Sales Employees
+## 5. Retrieve Employees in Finance or Sales
 
-I retrieved employees belonging to either the Finance or Sales departments.
+### Security Objective
+
+A separate security update needed to be applied to machines belonging to employees in either the Finance or Sales departments.
+
+### SQL Query
 
 ```sql
 SELECT *
@@ -124,15 +156,45 @@ WHERE department = 'Finance'
 OR department = 'Sales';
 ```
 
-I used `OR` because an employee only needed to belong to one of the two departments to appear in the results.
+### Analysis
 
-The query returned **71 employees**.
+I used the `OR` operator because an employee could belong to either Finance or Sales and still need the update. The corrected query returned **71 employees** across the two departments.
+
+### Troubleshooting
+
+My first attempt used:
+
+```sql
+WHERE department = 'Finance'
+AND department = 'Sales';
+```
+
+That query returned an **empty set**.
+
+The syntax itself was valid, but the filtering logic was incorrect. Using `AND` required the same employee record to have a department value of both `Finance` and `Sales` simultaneously.
+
+I recognized that the requirement was to retrieve employees belonging to **either** department, so I changed `AND` to `OR`.
+
+```sql
+WHERE department = 'Finance'
+OR department = 'Sales';
+```
+
+This was an important distinction between a syntax error and a logic error: SQL can successfully execute a query even when the conditions do not represent what the analyst intended to investigate.
+
+### Evidence
+
+![Finance or Sales employees](screenshots/05-finance-sales-employees.png)
 
 ---
 
-## Investigation 6: Employees Outside of Information Technology
+## 6. Retrieve All Employees Not in Information Technology
 
-Employees in Information Technology had already received a security update, so I needed to identify employees in every other department.
+### Security Objective
+
+Employees in the Information Technology department had already received a security update. I needed to identify employees in every other department whose machines still required the update.
+
+### SQL Query
 
 ```sql
 SELECT *
@@ -140,83 +202,74 @@ FROM employees
 WHERE NOT department = 'Information Technology';
 ```
 
-Using `NOT` excludes employees whose department is Information Technology.
+### Analysis
 
-The query returned **161 employees** who were outside of the Information Technology department.
+I used the `NOT` operator to exclude employees whose department was `Information Technology`. This allowed me to retrieve the employees who still needed the security update.
 
----
+The query returned **161 employees outside of the Information Technology department**.
 
-# Troubleshooting and Lessons Learned
+### Troubleshooting
 
-One of the most useful parts of this project was learning how to recognize and correct SQL mistakes instead of expecting every query to work correctly the first time.
+During this task, I initially entered a query for the Information Technology department and then accidentally continued entering another SQL statement before properly completing the previous input. MariaDB returned a syntax error.
 
-### Mistake 1: Filtering Locations Outside Mexico
-
-While investigating login attempts outside Mexico, I initially had trouble structuring the condition correctly.
-
-I learned that the database contained both `MEX` and `MEXICO`, so checking for only one exact value would not properly handle the data.
-
-The corrected condition was:
+I corrected the statement and then applied the required `NOT` condition:
 
 ```sql
-WHERE NOT country LIKE 'MEX%';
+WHERE NOT department = 'Information Technology';
 ```
 
-This taught me how `LIKE`, `%`, and `NOT` can work together to exclude multiple values that share the same pattern.
+The corrected query successfully excluded the Information Technology department.
 
-### Mistake 2: Filtering Finance or Sales
+### Evidence
 
-I initially attempted to filter Finance and Sales without creating a complete comparison for both departments.
+![Employees outside Information Technology](screenshots/06-non-it-employees.png)
 
-The correct query requires the `department` column to be compared separately against each value:
+---
+
+## Key SQL Concepts Applied
+
+### AND
+
+`AND` requires multiple conditions to be true simultaneously. I used it when identifying failed logins after 6:00 PM and Marketing employees located in the East building.
+
+### OR
+
+`OR` returns records when either condition is true. I used it to investigate two different login dates and to retrieve employees from either Finance or Sales.
+
+### NOT
+
+`NOT` excludes records matching a specified condition. I used it to exclude Mexico login activity and employees in the Information Technology department.
+
+### LIKE and the % Wildcard
+
+`LIKE` allows pattern matching instead of requiring an exact value. The `%` wildcard represents any sequence of characters.
+
+For example:
 
 ```sql
-SELECT *
-FROM employees
-WHERE department = 'Finance'
-OR department = 'Sales';
+country NOT LIKE 'MEX%'
 ```
 
-This helped me understand that both sides of an `OR` condition need to represent valid conditions.
+excludes values beginning with `MEX`, including `MEX` and `MEXICO`.
 
-### Validating Results
+Likewise:
 
-I also learned that a SQL query running without an error does not automatically mean that the query is logically correct.
+```sql
+office LIKE 'East%'
+```
 
-After running a query, I need to review the returned records and ask whether the results actually answer the question I intended to investigate.
-
-This is especially important in cybersecurity because an incorrect filter could cause an analyst to overlook relevant security events or investigate unrelated activity.
-
----
-
-## Security Relevance
-
-Security analysts frequently work with large datasets containing authentication logs, user accounts, devices, network activity, and security events.
-
-SQL allows an analyst to narrow that information to specific users, locations, dates, times, or conditions. Instead of manually reviewing every record, queries can isolate activity that requires further investigation.
-
-This project helped me practice thinking about SQL as an investigation tool rather than only as a database language.
+matches East building office values such as `East-170`, `East-195`, and `East-267`.
 
 ---
 
-## Evidence
+## What I Learned
 
-This repository includes supporting evidence from the lab environment showing the SQL queries and their results.
+One of the most useful lessons from this project was that a query can fail for different reasons. Some of my attempts produced **syntax errors**, while another query executed successfully but returned an empty set because my filtering logic was wrong.
 
-The evidence demonstrates both the completed investigation and the process I used to work through the queries.
+Troubleshooting those results required me to read the database response, reconsider what the query was actually asking the database to do, and modify the statement accordingly. That process is directly relevant to security analysis because investigating logs requires more than writing a valid query—the query also has to accurately represent the question being investigated.
 
-## Tools and Technologies
+## Summary
 
-- SQL
-- MariaDB
-- Linux command-line environment
-- Relational databases
-- Security log analysis
-- Data filtering
-- Query troubleshooting
+This investigation demonstrated how SQL filtering can support cybersecurity investigations and vulnerability remediation. I used login records to investigate failed after-hours activity, activity surrounding a specific date, and logins originating outside a specified country. I also queried employee records to identify systems requiring security updates based on department and office location.
 
-## Key Takeaway
-
-The biggest lesson from this project was that effective SQL analysis involves more than writing a query. I need to understand what I am searching for, choose the correct filters, examine the returned results, recognize when something does not look right, and correct the query when necessary.
-
-That troubleshooting process is an important part of using SQL during a security investigation.
+The project strengthened my ability to use `AND`, `OR`, `NOT`, `LIKE`, wildcards, and date/time filters while also giving me hands-on experience identifying and correcting both SQL syntax and logic errors.
