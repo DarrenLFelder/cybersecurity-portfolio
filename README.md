@@ -52,6 +52,9 @@ Incident response analysis applying the NIST Cybersecurity Framework (CSF) to an
 ### [Linux File Permissions and Authorization](linux/file-permissions-authorization/)
 Linux authorization project using Bash commands to examine file and directory permissions, identify excessive access, modify permissions with `chmod`, manage hidden-file permissions, restrict directory access, and verify remediation with `ls -la`.
 
+### [SQL Security Investigation](sql-security-investigation/)
+Security investigation using SQL to analyze login activity and employee records. Applied `AND`, `OR`, `NOT`, `LIKE`, wildcards, date/time filtering, and query troubleshooting to identify suspicious activity and systems requiring security updates.
+
 ## Portfolio Projects
 
 Projects and labs will be added as I progress through my cybersecurity training and complete hands-on security work.
@@ -61,7 +64,7 @@ Projects and labs will be added as I progress through my cybersecurity training 
 | Security Audits | [Botium Toys Internal Security Audit](security-audits/botium-toys-internal-audit/) |
 | Network Security | [DNS and ICMP Network Traffic Analysis](network-security/dns-icmp-traffic-analysis/) • [DoS SYN Flood Attack Analysis](network-security/dos-syn-flood-analysis/) • [Network Hardening Risk Assessment](network-security/network-hardening-risk-assessment/) |
 | Linux | [Linux File Permissions and Authorization](linux/file-permissions-authorization/) |
-| SQL | Coming soon |
+| SQL | [SQL Security Investigation](sql-security-investigation/) |
 | Python | Coming soon |
 | Incident Response | [NIST CSF ICMP DoS Incident Analysis](incident-response/nist-csf-icmp-dos-analysis/) |
 | Threat Analysis | Coming soon |
